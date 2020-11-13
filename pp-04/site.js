@@ -7,11 +7,11 @@
 x = 5;
 
 function double(num) {
-  x = num * 2;
+  var x = num * 2;
   return x;
 }
 
-double(6);
+double(6)
 console.log('The value of x is', x, '-- it should be 5.');
 
 /*
@@ -24,9 +24,35 @@ console.log('The value of x is', x, '-- it should be 5.');
   can accurately test your work.
 */
 
+(function() {
+  var x = 5;
+  function double(num) {
+    var x = num * 2;
+    return x;
+  }
+  
+  double(6)
+  console.log('The value of x is', x, '-- it should be 5.');
+})();
 
 /*
   Step 3. Rewrite your corrected `double()` function from Step 2.
   so that non-number values passed into the function are handled
   in some reasonable way.
 */
+
+(function() {
+  var x = 5;
+  function double(num) {
+    if(typeof(num) != "number") {
+      return 'function double recieved a non-number.';
+    } else {
+      var x = num * 2;
+      return x;
+    }
+  }
+
+  console.log(double('cow'));
+  console.log(double(6));
+  console.log('The value of x is', x, '-- it should be 5.');
+})();
